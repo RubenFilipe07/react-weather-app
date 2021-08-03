@@ -1,0 +1,27 @@
+body{
+  text-align: center;
+}
+
+.interface{
+max-width: 40%;
+margin: 0px auto;
+}
+
+.city{
+ font-size: 2em;
+ font-weight: 400;
+}
+
+.temperature{
+  margin-top: 20px;
+  font-size: 6em;
+  font-weight: 500;
+}
+
+.condition{
+  margin-top: -10px;
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
+
