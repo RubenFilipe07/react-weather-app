@@ -21,17 +21,23 @@ function App() {
     setWeather(res.data);
   }
 
-useEffect(()=> {
-  navigator.geolocation.getCurrentPosition((position)=> {
-    getWeather(position.coords.latitude, position.coords.longitude);
-    setLocation(true)
-  })
-}, [])
+  useEffect(() => {
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        getWeather(position.coords.latitude, position.coords.longitude);
+        setLocation(true)
+      },
+        err => {
+          alert(`ERROR(${err.code}): ${err.message}`)
+        }
+      )
+    }
+  }, [])
 
   if (location === false) {
     return (
       <Fragment>
-          <LocationRequest />
+        <LocationRequest />
       </Fragment>
     )
   }
@@ -40,15 +46,16 @@ useEffect(()=> {
       <Fragment>
         <Loading />
       </Fragment>
-    )}
+    )
+  }
   else {
-     let iconCode = weather['weather'][0]['icon']
+    let iconCode = weather['weather'][0]['icon']
     return (
       <div className="interface">
-       <h3 className="city">{weather['name']}</h3>
-       <h1 className="temperature">{weather['main']['temp']}° C</h1>
-       <img className="condition-icon" src ={`http://openweathermap.org/img/wn/${iconCode}.png`} alt="condition" />
-       <p className="condition">{weather['weather'][0]['description']}</p> 
+        <h3 className="city">{weather['name']}</h3>
+        <h1 className="temperature">{weather['main']['temp']}° C</h1>
+        <img className="condition-icon" src={`http://openweathermap.org/img/wn/${iconCode}.png`} alt="condition" />
+        <p className="condition">{weather['weather'][0]['description']}</p>
       </div>
     );
   }
