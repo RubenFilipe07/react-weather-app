@@ -1,5 +1,6 @@
 body{
   text-align: center;
+  margin: 0;
 }
 
 .interface{
@@ -10,20 +11,27 @@ margin: 0px auto;
 .city{
  font-size: 2em;
  font-weight: 400;
+ margin: 15px;
 }
 
 .temperature{
   margin-top: 20px;
   font-size: 6em;
   font-weight: 500;
+  margin: 0;
 }
 
 .condition{
-  margin-top: -10px;
+  margin: 0;
   font-size: 1.3em;
   font-weight: 400;
+  text-transform: capitalize;
+  color: rgba(255, 255, 255, 0.75);
 }
 
+.condition-icon{
+  margin: 0;
+}
 
 @media only screen and (max-width: 720px) {
   .interface{

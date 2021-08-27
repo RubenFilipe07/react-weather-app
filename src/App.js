@@ -19,25 +19,43 @@ function App() {
       }
     });
     setWeather(res.data);
+    console.log(res.data);
   }
-
-  useEffect(() => {
+ 
+  async function getLocation() {
     if (navigator && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         getWeather(position.coords.latitude, position.coords.longitude);
         setLocation(true)
       },
         err => {
-          alert(`ERROR(${err.code}): ${err.message}`)
+          if( err.code === 1){
+            alert("Permita que este site utilize localização do seu dispositivo e verifique se a localização está ativada")
+          }
+          else if( err.code === 1){
+            alert("Não foi possível obter a localização. Verifique se a localização do seu dispositivo está ativada")
+          }
+          else{
+            alert(`ERROR(${err.code}): ${err.message}`)
+          }
         }
       )
     }
-  }, [])
+  }
+
+  useEffect(()=> {
+    getLocation()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+
 
   if (location === false) {
     return (
       <Fragment>
         <LocationRequest />
+        <button onClick={getLocation}>Get location</button>
       </Fragment>
     )
   }
@@ -53,9 +71,10 @@ function App() {
     return (
       <div className="interface">
         <h3 className="city">{weather['name']}</h3>
-        <h1 className="temperature">{weather['main']['temp']}° C</h1>
-        <img className="condition-icon" src={`http://openweathermap.org/img/wn/${iconCode}.png`} alt="condition" />
+        <h1 className="temperature">{(weather['main']['temp']).toFixed(0)}°C</h1>
         <p className="condition">{weather['weather'][0]['description']}</p>
+        <img className="condition-icon" src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`} alt="condition" />
+
       </div>
     );
   }

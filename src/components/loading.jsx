@@ -6,7 +6,7 @@ const Loading =  () =>{
     return(
          <Fragment>
              <h1 className="center">loading weather information</h1>
-            <img src={loadingAnimation} alt="loading" />
+            <img class="loading" src={loadingAnimation} alt="loading" />
         </Fragment>
     )
 }
