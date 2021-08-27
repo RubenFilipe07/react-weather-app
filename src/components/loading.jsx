@@ -5,7 +5,7 @@ import loadingAnimation from './loading.gif'
 const Loading =  () =>{
     return(
          <Fragment>
-             <h1 className="center">loading weather information</h1>
+             <h1 className="center">Carregando informações do clima</h1>
             <img class="loading" src={loadingAnimation} alt="loading" />
         </Fragment>
     )

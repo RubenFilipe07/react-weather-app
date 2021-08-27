@@ -4,7 +4,7 @@ import './locationRequest.css'
 const LocationRequest =  () =>{
     return(
          <Fragment>
-             <h1 className="center">Enable location access in your browser</h1>
+             <h1 className="center">Ative o acesso a localização em seu navegador</h1>
         </Fragment>
     )
 }
