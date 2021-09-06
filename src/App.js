@@ -49,13 +49,11 @@ function App() {
   }, []);
 
 
-
-
   if (location === false) {
     return (
       <Fragment>
         <LocationRequest />
-        <button onClick={getLocation}>Get location</button>
+        <button onClick={getLocation}>Obter Localização</button>
       </Fragment>
     )
   }
@@ -69,11 +67,11 @@ function App() {
   else {
     let iconCode = weather['weather'][0]['icon']
     return (
-      <div className="interface">
-        <h3 className="city">{weather['name']}</h3>
-        <h1 className="temperature">{(weather['main']['temp']).toFixed(0)}°C</h1>
-        <p className="condition">{weather['weather'][0]['description']}</p>
-        <img className="condition-icon" src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`} alt="condition" />
+      <div className={'interface'}>
+          <h3 className={"city"}>{weather['name']}</h3>
+          <h1 className={"temperature"}>{(weather['main']['temp']).toFixed(0)}°C</h1>
+          <p className={"condition"}>{weather['weather'][0]['description']}</p>
+          <img className={"condition-icon"} src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`} alt="condition" />
 
       </div>
     );
